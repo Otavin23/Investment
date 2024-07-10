@@ -1,3 +1,7 @@
+import { DataMediaContext } from "@/context/DataMedia";
+import Link from "next/link";
+import { useContext } from "react";
+
 interface IProps {
   owner: string;
   value: number;
@@ -5,25 +9,18 @@ interface IProps {
 }
 
 const CardInvestment = ({ owner, value, date }: IProps) => {
-  const calcularValorFuturo = (valorInicial: number, dataCriacao: Date) => {
-    const taxaRendimentoMensal = 0.32;
-    const dataInicio = new Date(dataCriacao);
-    const dataAtual = new Date();
-
-    const diferencaMeses =
-      (dataAtual.getFullYear() - dataInicio.getFullYear()) * 12 +
-      (dataAtual.getMonth() - dataInicio.getMonth());
-
-    return valorInicial * Math.pow(1 + taxaRendimentoMensal, diferencaMeses);
-  };
+  const { calculateFutureValue } = useContext(DataMediaContext);
 
   return (
-    <div className="bg-[#ffffff] border-[1px] border-[rgba(29, 29, 29, 0.04)] rounded-lg p-4.5 shadow-[_7px_7px_0_#cec217]">
+    <div className="bg-[#ffffff] border-[1px] border-[rgba(29, 29, 29, 0.04)] rounded-lg p-4.5 shadow-[_7px_7px_0_#279effb2]">
       <div className="flex justify-between items-center pb-3.5 border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
         <h3 className="font-medium">{owner}</h3>
-        <span className="text-primary text-title-xsm1 font-bold cursor-pointer ">
+        <Link
+          href={`/investment/details/${owner}`}
+          className="ext-primary text-title-xsm1 font-bold cursor-pointer"
+        >
           Details
-        </span>
+        </Link>
       </div>
       <p className="flex items-center mt-4.5 font-medium text-title-md2 text-[#rgb(1, 188, 141)]">
         {value.toLocaleString("pt-br", {
@@ -32,7 +29,7 @@ const CardInvestment = ({ owner, value, date }: IProps) => {
         })}
       </p>
       <p className="flex items-center font-medium text-title-xsm2 text-[#02BC8D]">
-        +{calcularValorFuturo(value, date).toFixed(2)}
+        +{calculateFutureValue(value, date).toFixed(2)}
         <svg
           width="8"
           height="6.67"
@@ -47,4 +44,4 @@ const CardInvestment = ({ owner, value, date }: IProps) => {
   );
 };
 
-export { CardInvestment };
+export default CardInvestment;

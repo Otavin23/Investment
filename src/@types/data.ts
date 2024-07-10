@@ -1,6 +1,6 @@
 interface IData {
   owner: string;
-  date?: Date;
+  date: Date;
   value: number | 0;
 }
 
