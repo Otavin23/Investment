@@ -7,25 +7,21 @@ import { Button } from "../ui/button";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Data } from "@/utils/data";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 
 import { CurrencyInput } from "react-currency-mask";
 import { InvestmentSchema } from "@/utils/schemas/schemaInvestment";
 import { Calender } from "./_components/calender";
+import { IData } from "@/@types/data";
 
 interface IProps {
   isClose: (arg: boolean) => void;
+  setData: (arg: any) => any;
+  Data: IData[];
 }
 
-interface IForm {
-  owner: string;
-  date?: Date;
-  value: number | 0;
-}
-
-const Modal = ({ isClose }: IProps) => {
+const Modal = ({ isClose, setData, Data }: IProps) => {
   const [date, setDate] = useState<any>(new Date());
 
   const {
@@ -33,27 +29,27 @@ const Modal = ({ isClose }: IProps) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<IForm>({
+  } = useForm<IData>({
     resolver: yupResolver(InvestmentSchema),
   });
 
-  const handleSubmitForm: SubmitHandler<IForm> = (form) => {
+  const handleSubmitForm: SubmitHandler<IData> = (form) => {
     const findInvestment = Data.find(
-      (investment) => investment.owner === form.owner
+      (investment: IData) => investment.owner === form.owner
     );
 
-    if (findInvestment) {
-      return toast.error("Investimento já existente!");
-    }
+    if (findInvestment) return toast.error("Investimento já existente!");
 
-    const investmentForm: IForm = {
+    const investmentForm: IData = {
       ...form,
       date,
     };
 
-    Data.push(investmentForm);
-
-    Cookies.set("data-investments", JSON.stringify(Data));
+    setData((prevData: IData[]) => {
+      const newData = [...prevData, investmentForm];
+      Cookies.set("data-investments", JSON.stringify(newData));
+      return newData;
+    });
 
     toast.success("Investimento criado com sucesso!");
   };
@@ -94,7 +90,7 @@ const Modal = ({ isClose }: IProps) => {
           <div className="mt-3.5">
             <label className="text-title-xsm1">Valor inicial</label>
             <CurrencyInput
-              onChangeValue={(event, originalValue: any, maskedValue) => {
+              onChangeValue={(event, originalValue: any, maskedValue: any) => {
                 setValue("value", originalValue);
               }}
               InputElement={

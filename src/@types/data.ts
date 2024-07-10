@@ -1,6 +1,7 @@
-interface IForm {
+interface IData {
   owner: string;
   date?: Date;
   value: number | 0;
 }
-export const Data: IForm[] = [];
+
+export type { IData };
