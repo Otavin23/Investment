@@ -8,7 +8,7 @@
   Open http://localhost:3000 with your browser to see the result.
 
 - Secondary, run the server
-  npx json-server db.json port 3001
+  npx json-server db.json -p 3001 -w
 
   Open http://localhost:3001 with your browser to see the result.
 
