@@ -1,49 +1,44 @@
-# "Intro to Testing in Next.js"
-
-## with Jest, React Testing Library, TypeScript
-
 ---
 
-### Author Links
+### Getting Started
 
-👋 Hello, I'm Dave Gray.
+- First, run the development server:
+  npm run dev | yarn dev | pnpm dev
 
-👉 [My Courses](https://courses.davegray.codes/)
+  Open http://localhost:3000 with your browser to see the result.
 
-✅ [Check out my YouTube Channel with hundreds of tutorials](https://www.youtube.com/DaveGrayTeachesCode).
+- Secondary, run the server
+  npx json-server db.json port 3001
 
-🚩 [Subscribe to my channel](https://bit.ly/3nGHmNn)
-
-☕ [Buy Me A Coffee](https://buymeacoffee.com/DaveGray)
-
-🚀 Follow Me:
-
-- [Twitter](https://twitter.com/yesdavidgray)
-- [LinkedIn](https://www.linkedin.com/in/davidagray/)
-- [Blog](https://yesdavidgray.com)
-- [Reddit](https://www.reddit.com/user/DaveOnEleven)
-
----
-
-### Description
-
-📺 [YouTube Video](https://youtu.be/AS79oJ3Fcf0) for this repository.
+  Open http://localhost:3001 with your browser to see the result.
 
 ### 📚 References
-- 🔗 [Next.js Official Site](https://nextjs.org/)
-- 🔗 [TypeScript Official Site](https://www.typescriptlang.org/)
-- 🔗 [Jest Official Site](https://jestjs.io/)
-- 🔗 [React Testing Library Official Site](https://testing-library.com/docs/react-testing-library/intro)
 
----
+- 🔗 Recharts (o que faz): Biblioteca de gráficos baseada em React que facilita a criação de gráficos responsivos e bonitos.
+  [https://recharts.org/en-US]
 
-### ⚙ Free Web Dev Tools
-- 🔗 [Google Chrome Web Browser](https://google.com/chrome/)
-- 🔗 [Visual Studio Code (aka VS Code)](https://code.visualstudio.com/)
-- 🔗 [ES7 React Snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+- 🔗 Axios: Cliente HTTP baseado em Promises para fazer requisições HTTP tanto do navegador quanto do Node.js.
+  [https://axios-http.com/ptbr/docs/intro]
 
----
+- 🔗 Date-fns: Biblioteca moderna para manipulação de datas em JavaScript.
+  [https://date-fns.org/]
 
-### 🎓 Academic Honesty
+- 🔗 React Hook Form: Biblioteca para construir formulários flexíveis e performáticos em React.
+  [https://www.react-hook-form.com/]
+- 🔗 SWR (Stale-While-Revalidate): Biblioteca React para buscar, revalidar e manter dados de forma eficiente com cache local.
+  [https://swr.vercel.app/]
 
-**DO NOT COPY FOR AN ASSIGNMENT** - Avoid plagiarism and adhere to the spirit of this [Academic Honesty Policy](https://www.freecodecamp.org/news/academic-honesty-policy/).
+- 🔗 Tailwind CSS: Framework CSS utilitário para construir interfaces customizáveis rapidamente.
+  [https://tailwindcss.com/]
+
+- 🔗 Yup: Biblioteca para validação de schemas em JavaScript.
+  [https://www.npmjs.com/package/yup]
+
+- 🔗 gridjs: Biblioteca para criar tabelas interativas em JavaScript.
+  [https://gridjs.io/]
+
+- 🔗 react-calendar: Componente React para calendários.
+  [https://ui.shadcn.com/docs/components/date-picker]
+
+- 🔗 react-currency-mask: Componente React para máscara de entrada de moeda.
+  [https://www.npmjs.com/package/react-currency-mask?activeTab=readme]
