@@ -6,9 +6,9 @@ const InvestmentSchema = object({
     .min(6, "deve ter  pelo menos 6 caracteres")
     .max(20, "maximo de 15 caracteres")
     .test({
-      message: "Números não são permitidos.",
+      message: "Números ou caracteres especiais não são permitidos.",
       test: (value: any) => {
-        const isNumbers = value.match(/\d+/g);
+        const isNumbers = value.match(/[^a-zA-Z\s]/g);
         if (isNumbers) return;
         return value;
       },
