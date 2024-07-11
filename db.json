@@ -1,0 +1,41 @@
+{
+  "withdraw": [],
+  "investments": [
+    {
+      "id": "e5b4",
+      "owner": "hello world",
+      "value": 33.33,
+      "date": "2024-07-04T03:00:00.000Z"
+    },
+    {
+      "id": "afd1",
+      "owner": "otavionho",
+      "value": 33.33,
+      "date": ""
+    },
+    {
+      "id": "3f9f",
+      "owner": "helloo",
+      "value": 2.22,
+      "date": ""
+    },
+    {
+      "id": "500f",
+      "owner": "dadadada",
+      "value": 33.33,
+      "date": ""
+    },
+    {
+      "id": "0e2e",
+      "owner": "dadadada",
+      "value": 33.33,
+      "date": ""
+    },
+    {
+      "id": "38e5",
+      "owner": "hello world",
+      "value": 3.33,
+      "date": "2024-07-04T03:00:00.000Z"
+    }
+  ]
+}
