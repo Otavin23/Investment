@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 
 import { Input } from "@/Components/ui/input";
-import { Button } from "../ui/button";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,19 +20,25 @@ interface IProps {
   Data: IData[];
 }
 
+interface IForm {
+  owner: string;
+  date?: Date | string;
+  value: number | 0;
+}
+
 const Modal = ({ isClose, setData, Data }: IProps) => {
-  const [date, setDate] = useState<any>(new Date());
+  const [date, setDate] = useState<any>("");
 
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<IData>({
+  } = useForm<IForm>({
     resolver: yupResolver(InvestmentSchema),
   });
 
-  const handleSubmitForm: SubmitHandler<IData> = (form) => {
+  const handleSubmitForm: SubmitHandler<IForm> = (form) => {
     const findInvestment = Data.find(
       (investment: IData) => investment.owner === form.owner
     );
@@ -57,6 +62,7 @@ const Modal = ({ isClose, setData, Data }: IProps) => {
   return (
     <div className="fixed z-50 inset-0 flex items-center justify-center overflow-hidden">
       <div
+        data-testid="closeModal"
         onClick={() => isClose(false)}
         className="fixed inset-0 transition-opacity"
       >

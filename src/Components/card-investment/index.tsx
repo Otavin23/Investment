@@ -12,7 +12,10 @@ const CardInvestment = ({ owner, value, date }: IProps) => {
   const { calculateFutureValue } = useContext(DataMediaContext);
 
   return (
-    <div className="bg-[#ffffff] border-[1px] border-[rgba(29, 29, 29, 0.04)] rounded-lg p-4.5 shadow-[_7px_7px_0_#279effb2]">
+    <div
+      data-testid="card-investment"
+      className="bg-[#ffffff] border-[1px] border-[rgba(29, 29, 29, 0.04)] rounded-lg p-4.5 shadow-[_7px_7px_0_#279effb2]"
+    >
       <div className="flex justify-between items-center pb-3.5 border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
         <h3 className="font-medium">{owner}</h3>
         <Link
