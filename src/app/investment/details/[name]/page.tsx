@@ -34,11 +34,12 @@ const MyPage = ({ params: { name } }: IProps) => {
         ) : (
           find.map((investment) => (
             <>
-              <header className="flex justify-between items-center ">
-                <h1 className="font-medium text-primary max-w-[600px] text-title-md2 ">
+              <header className="flex flex-col justify-between items-center tabletmd:flex-row">
+                <h1 className="font-medium text-primary max-w-[600px] text-title-md2 text-center xsm:text-normal">
                   Informações de investimento
                 </h1>
-                <div className="flex items-center">
+
+                <div className="flex flex-col items-center xsm:flex-row">
                   <span
                     className="mr-4.5 text-secondary font-medium underline decoration-1
 "

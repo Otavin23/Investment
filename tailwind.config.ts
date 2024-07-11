@@ -20,6 +20,7 @@ const config: Config = {
       lg: "990px",
       xsm: "550px",
       tablet: "725px",
+      tabletmd: "990px",
       desktop: "1366px",
       desktopMD: "1450px",
       desktopMini: "1024px",

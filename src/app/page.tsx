@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <main className="my-6.5">
         <div className="container">
-          <section className="flex items-center justify-between border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
+          <section className="flex flex-col items-start justify-between xsm:flex-row xsm:items-center pb-4.5 border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
             <h1 className="font-medium text-primary text-title-lg">
               Criação de investimento
             </h1>
@@ -38,7 +38,7 @@ export default function Home() {
           </section>
 
           <section className="">
-            <div className="grid grid-cols-4 gap-4 mt-10.5">
+            <div className="grid grid-cols-1 gap-4 mt-10.5  xsm:grid-cols-2 tabletmd:grid-cols-3 desktop:grid-cols-4">
               {data.length <= 0 ? (
                 <h1>Adicione um investimento</h1>
               ) : (
