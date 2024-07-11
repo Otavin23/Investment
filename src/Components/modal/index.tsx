@@ -13,11 +13,10 @@ import { CurrencyInput } from "react-currency-mask";
 import { InvestmentSchema } from "@/utils/schemas/schemaInvestment";
 import { Calender } from "./_components/calender";
 import { IData } from "@/@types/data";
+import { api } from "@/services/api";
 
 interface IProps {
   isClose: (arg: boolean) => void;
-  setData: (arg: any) => any;
-  Data: IData[];
 }
 
 interface IForm {
@@ -26,7 +25,7 @@ interface IForm {
   value: number | 0;
 }
 
-const Modal = ({ isClose, setData, Data }: IProps) => {
+const Modal = ({ isClose }: IProps) => {
   const [date, setDate] = useState<any>("");
 
   const {
@@ -38,25 +37,19 @@ const Modal = ({ isClose, setData, Data }: IProps) => {
     resolver: yupResolver(InvestmentSchema),
   });
 
-  const handleSubmitForm: SubmitHandler<IForm> = (form) => {
-    const findInvestment = Data.find(
-      (investment: IData) => investment.owner === form.owner
-    );
+  const handleSubmitForm: SubmitHandler<IForm> = async (form) => {
+    try {
+      const investmentForm: IData = {
+        ...form,
+        date,
+      };
 
-    if (findInvestment) return toast.error("Investimento já existente!");
+      await api.post("/investments", investmentForm);
 
-    const investmentForm: IData = {
-      ...form,
-      date,
-    };
-
-    setData((prevData: IData[]) => {
-      const newData = [...prevData, investmentForm];
-      Cookies.set("data-investments", JSON.stringify(newData));
-      return newData;
-    });
-
-    toast.success("Investimento criado com sucesso!");
+      toast.success("Investimento criado com sucesso!");
+    } catch (error) {
+      toast.error("Erro ao criar um investimento");
+    }
   };
 
   return (

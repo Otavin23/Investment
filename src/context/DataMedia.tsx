@@ -1,17 +1,7 @@
-import { IData } from "@/@types/data";
 import { createContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
 
 interface IContext {
-  data: IData[];
-  setData: React.Dispatch<React.SetStateAction<any>>;
-  calculateFutureValue: (value: number, data: Date) => number;
-}
-
-interface IIvestment {
-  owner: string;
-  date: Date;
-  value: number | 0;
+  calculateFutureValue: (value: number, data: Date | undefined) => number;
 }
 
 interface IProps {
@@ -21,15 +11,6 @@ interface IProps {
 export const DataMediaContext = createContext<IContext>({} as IContext);
 
 function DataMediaProvider({ children }: IProps) {
-  const [data, setData] = useState<IIvestment[]>([]);
-
-  useEffect(() => {
-    if (data.length <= 0) {
-      const cookieData = JSON.parse(Cookies.get("data-investments") || "[]");
-      setData(cookieData);
-    }
-  }, [data.length]);
-
   const calculateFutureValue = (intialValue: number, creationDate: Date) => {
     const monthlyYieldRate = 0.52;
     const startDate = new Date(creationDate);
@@ -43,8 +24,6 @@ function DataMediaProvider({ children }: IProps) {
   };
 
   const valor = {
-    data,
-    setData,
     calculateFutureValue,
   };
 

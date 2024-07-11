@@ -1,17 +1,14 @@
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect } from "react";
 import { Grid } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
-import { DataMediaContext } from "@/context/DataMedia";
 
 interface IProps {
-  owner: string;
+  owner: string | undefined;
   incomeMonthly: string;
   value: number;
 }
 
 const TableInvestment = ({ value, incomeMonthly, owner }: IProps) => {
-  const { data } = useContext(DataMediaContext);
-
   const wrapperRef = useRef<any>(null);
 
   const grid = new Grid({

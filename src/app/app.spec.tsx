@@ -1,7 +1,6 @@
 import { getByTestId, getByText, render, screen } from "@testing-library/react";
 import Home from "./page";
 import { Providers } from "./app.providers";
-import Modal from "@/Components/modal";
 
 describe("Home Page", () => {
   const renderHome = () =>

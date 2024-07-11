@@ -1,14 +1,9 @@
 import { DataMediaContext } from "@/context/DataMedia";
 import Link from "next/link";
 import { useContext } from "react";
+import { IInvestment } from "@/@types/data";
 
-interface IProps {
-  owner: string;
-  value: number;
-  date: Date;
-}
-
-const CardInvestment = ({ owner, value, date }: IProps) => {
+const CardInvestment = ({ id, owner, value, date }: IInvestment) => {
   const { calculateFutureValue } = useContext(DataMediaContext);
 
   return (
@@ -19,7 +14,7 @@ const CardInvestment = ({ owner, value, date }: IProps) => {
       <div className="flex justify-between items-center pb-3.5 border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
         <h3 className="font-medium">{owner}</h3>
         <Link
-          href={`/investment/details/${owner.replaceAll(/\s+/g, "")}`}
+          href={`/investment/details/${id}`}
           className="ext-primary text-title-xsm1 font-bold cursor-pointer"
         >
           Details
