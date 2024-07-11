@@ -21,7 +21,9 @@ const MyPage = ({ params: { name } }: IProps) => {
   const { data } = useContext(DataMediaContext);
 
   const find = data.filter(
-    (investment) => investment.owner.toLowerCase() === name.toLocaleLowerCase()
+    (investment) =>
+      investment.owner.replaceAll(/\s+/g, "").toLowerCase() ===
+      name.replaceAll(/\s+/g, "").toLocaleLowerCase()
   );
 
   return (
@@ -46,7 +48,9 @@ const MyPage = ({ params: { name } }: IProps) => {
                   <div className="border-[1px] border-[rgba(29, 29, 29, 0.08)] rounded-md">
                     <button
                       style={{
-                        background: `${select === "graph" ? "#24242411" : "transparent"}`,
+                        background: `${
+                          select === "graph" ? "#24242411" : "transparent"
+                        }`,
                       }}
                       onClick={() => setSelect("graph")}
                       className="p-1.5 px-2.5 border-r-[1px] border-r-[rgba(29, 29, 29, 0.08)]"
@@ -56,7 +60,9 @@ const MyPage = ({ params: { name } }: IProps) => {
 
                     <button
                       style={{
-                        background: `${select === "table" ? "#24242411" : "transparent"}`,
+                        background: `${
+                          select === "table" ? "#24242411" : "transparent"
+                        }`,
                       }}
                       onClick={() => setSelect("table")}
                       className="p-1.5 px-2.5 "
@@ -69,7 +75,7 @@ const MyPage = ({ params: { name } }: IProps) => {
 
               <section className="mt-10.5 mb-4.5">
                 <div>
-                  <h2 className="text-title-lg font-medium">
+                  <h2 className="flex flex-col text-title-lg font-medium">
                     {investment.owner}
                   </h2>
                   <div className="flex items-start my-1.5">
@@ -91,16 +97,30 @@ const MyPage = ({ params: { name } }: IProps) => {
                         }}
                       />
 
-                      {calculateFutureValue(investment.value, investment.date)}
+                      {calculateFutureValue(
+                        investment.value,
+                        investment.date
+                      ).toFixed(2)}
                     </p>
                   </div>
                 </div>
               </section>
+
+              {select === "graph" ? (
+                <GraphLine />
+              ) : (
+                <TableInvestment
+                  incomeMonthly={calculateFutureValue(
+                    investment.value,
+                    investment.date
+                  ).toFixed(2)}
+                  owner={investment.owner}
+                  value={investment.value}
+                />
+              )}
             </>
           ))
         )}
-
-        {select === "graph" ? <GraphLine /> : <TableInvestment />}
       </div>
     </main>
   );

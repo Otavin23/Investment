@@ -19,7 +19,7 @@ const CardInvestment = ({ owner, value, date }: IProps) => {
       <div className="flex justify-between items-center pb-3.5 border-b-[1px] border-b-[rgba(29, 29, 29, 0.04)]">
         <h3 className="font-medium">{owner}</h3>
         <Link
-          href={`/investment/details/${owner}`}
+          href={`/investment/details/${owner.replaceAll(/\s+/g, "")}`}
           className="ext-primary text-title-xsm1 font-bold cursor-pointer"
         >
           Details

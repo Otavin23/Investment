@@ -3,21 +3,21 @@ import { Grid } from "gridjs";
 import "gridjs/dist/theme/mermaid.css";
 import { DataMediaContext } from "@/context/DataMedia";
 
-const TableInvestment = () => {
+interface IProps {
+  owner: string;
+  incomeMonthly: string;
+  value: number;
+}
+
+const TableInvestment = ({ value, incomeMonthly, owner }: IProps) => {
   const { data } = useContext(DataMediaContext);
 
   const wrapperRef = useRef<any>(null);
 
   const grid = new Grid({
-    columns: [
-      "Valor investimento",
-      "Rendimento mensal",
-      "Total",
-      "Rendimento anual",
-    ],
+    columns: ["Proprietário do investimento", "Rendimento mensal", "Total"],
     data: [
-      ["John", "john@example.com", "(353) 01 222 3333", "a"],
-      ["Mark", "mark@gmail.com", "(01) 22 888 4444", "a"],
+      [owner, `R$ ${incomeMonthly}`, `R$ ${value + Number(incomeMonthly)}`],
     ],
   });
 

@@ -47,6 +47,7 @@ const Modal = ({ isClose, setData, Data }: IProps) => {
 
     const investmentForm: IData = {
       ...form,
+      owner: form.owner.replaceAll(/[^a-zA-Z0-9 ]/g, ""),
       date,
     };
 

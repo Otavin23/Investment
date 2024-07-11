@@ -48,8 +48,6 @@ function DataMediaProvider({ children }: IProps) {
     calculateFutureValue,
   };
 
-  console.log(data);
-
   return (
     <DataMediaContext.Provider value={valor}>
       {children}
